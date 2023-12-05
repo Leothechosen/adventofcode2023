@@ -1,9 +1,5 @@
-import copy
-
 def part1(data):
     def x_to_y_sorter(step, number):
-        #print(f"{number}")
-        #print(f"{number} -> ", end='')
         for line in step:
             dest_start, source_start, range_len = map(int, line.split(" "))
             if number in range(source_start, source_start+range_len):
@@ -22,15 +18,12 @@ def part1(data):
     for seed in map(int, seeds):
         for func in [seed_to_soil, soil_to_fert, fert_to_water, water_to_light, light_to_temp, temp_to_humid, humid_to_location]:
             seed = x_to_y_sorter(func, seed)
-        #print(f"{seed}")
         locations.append(seed)
     return min(locations)  
                                 
 
 def part2(data):
     def x_to_y_sorter(step, number):
-        #print(f"{number}")
-        #print(f"{number} -> ", end='')
         for line in step:
             dest_start, source_start, range_len = map(int, line.split(" "))
             if number in range(source_start, source_start+range_len):
@@ -52,14 +45,11 @@ def part2(data):
         for seed in range(int(seed_start), int(seed_start)+int(seed_len)):
             for func in [seed_to_soil, soil_to_fert, fert_to_water, water_to_light, light_to_temp, temp_to_humid, humid_to_location]:
                 seed = x_to_y_sorter(func, seed)
-            #print(f"{seed}")
             locations.append(seed)
     return min(locations)
 
 def part2reverse(data):
     def y_to_x(step, number):
-        #print(f"{number}")
-        #print(f"{number} -> ", end='')
         for line in step:
             dest_start, source_start, range_len = map(int, line.split(" "))
             if number in range(dest_start, dest_start+range_len):
